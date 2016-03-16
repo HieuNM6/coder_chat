@@ -11,10 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160315162335) do
+ActiveRecord::Schema.define(version: 20160316140511) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "messages", force: :cascade do |t|
+    t.integer  "to_id"
+    t.text     "content"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer  "user_id"
+    t.boolean  "read",       default: false
+    t.integer  "event_id"
+    t.string   "event_type"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "notifications", ["event_type", "event_id"], name: "index_notifications_on_event_type_and_event_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -24,4 +45,5 @@ ActiveRecord::Schema.define(version: 20160315162335) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "messages", "users"
 end
