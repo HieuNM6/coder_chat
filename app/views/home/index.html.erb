@@ -3,7 +3,8 @@
 <% if logged_in? %>
   <h2>
     wellcome <%= current_user.name  %>! | <%= link_to "Logout", logout_path, 
-      method: :delete %>
+      method: :delete %> <br>
+      You have <%= pluralize(@unread_messages_count, "unread message") %>
   </h2>
 <% else %>
   <%= link_to "Register", new_user_path %> | <%= link_to "Login", login_path %>
