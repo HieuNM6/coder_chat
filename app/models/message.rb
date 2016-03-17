@@ -4,6 +4,9 @@ class Message < ActiveRecord::Base
   has_many :notifications, as: :event
 
   after_create :send_notification
+
+  validates :content, presence: true
+  validates :to_id, presence: true
   
   private
   def send_notification

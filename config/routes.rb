@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'messages/new'
+
   get 'sessions/new'
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -19,6 +21,8 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   resources :users
+  resources :messages, only: [:new, :index, :create, :destroy]
+
 
   # Example resource route with options:
   #   resources :products do
