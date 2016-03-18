@@ -1,7 +1,7 @@
 class Message < ActiveRecord::Base
   belongs_to :user
   belongs_to :recipient, class_name: 'User', foreign_key: :to_id
-  has_many :notifications, as: :event
+  has_one :notification, as: :event
 
   after_create :send_notification
 
@@ -10,6 +10,6 @@ class Message < ActiveRecord::Base
   
   private
   def send_notification
-    self.notifications.create(user: self.recipient)
+    self.create_notification(user: self.recipient)
   end
 end

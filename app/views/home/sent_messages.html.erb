@@ -1,0 +1,20 @@
+<h1 class="text-xs-center"> Has sent Messages box</h1>
+<% if !@messages.blank? %>
+  <ul>
+    <% @messages.each do |m| %>
+      <% unless has_read? m %>
+      <strong>
+        <li> 
+          Message has been sent to <%= recipient_of_message(m).email %> at: 
+          <%= format_time(m.created_at) %>
+        </li>
+      </strong>
+      <% else %>
+        <li> Message to <%= recipient_of_message(m).email %> has been read at: 
+                            <%= format_time(m.notification.updated_at) %></li>
+      <% end %>
+    <% end %>
+  </ul>
+<% else %>
+  <h2> Messages box empty</h2>
+<% end %>

@@ -1,7 +1,19 @@
+<div class="jumbotron jumbotron-fluid" style= "background-color: #563d7c; color: #fff">
+  <h1 class="display-3 text-xs-center">Sign up</h1>
+  <p class="lead text-xs-center" style="color:#cdbfe3" >
+    Create your Coder Chat account for chatting 
+  </p>
+</div>
 <%= simple_form_for @user do |f| %>
-  <%= f.input :name  %>
-  <%= f.input :email %>
-  <%= f.input :password %>
-  <%= f.input :password_confirmation %>
-  <%= f.button :submit %>
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <%= f.input :name, label: "Name:" %>
+      <%= f.input :email, label: "Email:" %>
+      <%= f.input :password, label: "Password:" %>
+      <%= f.input :password_confirmation, label: "Confirm:" %>
+      <div class="text-xs-center">
+        <%= f.button :submit, "Register", class: "btn btn-secondary btn-lg" %>
+      </div>
+    </div>
+  </div>
 <% end %>

@@ -4,7 +4,10 @@
   <h2>
     wellcome <%= current_user.name  %>! | <%= link_to "Logout", logout_path, 
       method: :delete %> <br>
-      You have <%= pluralize(@unread_messages_count, "unread message") %>
+      You have <%= pluralize(@unread_messages_count, "unread message") %> <br>
+      <%= link_to "New Message", new_message_path %> |
+      <%= link_to "Inbox", messages_path %> | 
+      <%= link_to "Outbox", sent_messages_path %> 
   </h2>
 <% else %>
   <%= link_to "Register", new_user_path %> | <%= link_to "Login", login_path %>

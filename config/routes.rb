@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   post 'new_session' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
+  get 'sent_messages' => 'home#sent_messages'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -21,7 +22,7 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   resources :users
-  resources :messages, only: [:new, :index, :create, :destroy]
+  resources :messages, only: [:new, :show,:index, :create, :destroy]
 
 
   # Example resource route with options:

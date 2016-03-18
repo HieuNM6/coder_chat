@@ -1,7 +1,17 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
-<%= simple_form_for :user, {url:new_session_path} do |f| %>
-  <%= f.input :email, label:"Your email:" %>
-  <%= f.input :password, label:"Password:" %>
-  <%= f.submit :submit, label:"Login"  %>
-<% end %>
+<div class="jumbotron jumbotron-fluid" style= "background-color: #563d7c; color: #fff">
+  <h1 class="display-3 text-xs-center">Sign In</h1>
+  <p class="lead text-xs-center" style="color:#cdbfe3" >
+    Sign in to start chatting with your friends
+  </p>
+</div>
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-2">
+    <%= simple_form_for :user, {url:new_session_path} do |f| %>
+      <%= f.input :email, label: "Email:" %>
+      <%= f.input :password, label:"Password:" %>
+      <div class="text-xs-center">
+        <%= f.button :submit, "Sign in", class:"btn btn-secondary btn-lg"  %>
+      </div>
+     <% end %>
+  </div>
+</div>

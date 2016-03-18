@@ -4,10 +4,13 @@
     <% @messages.each do |m| %>
       <% unless has_read? m %>
       <strong>
-        <li> Messages has been receive at: <%= format_time(m.created_at) %></li>
+        <li> 
+          <%= link_to "Messages has been receive at: 
+                              #{format_time(m.notification.created_at)}", message_path(m) %>
+        </li>
       </strong>
       <% else %>
-        <li> Messages has been read at: <%= format_time(m.updated_at) %></li>
+        <li> Messages has been read at: <%= format_time(m.notification.updated_at) %></li>
       <% end %>
     <% end %>
   </ul>

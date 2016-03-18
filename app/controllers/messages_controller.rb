@@ -1,6 +1,5 @@
 class MessagesController < ApplicationController
   before_action :require_login 
-  helper_method :has_read?
   def new
     @message = current_user.messages.new
   end
@@ -20,12 +19,16 @@ class MessagesController < ApplicationController
     @messages = current_user.messages_received
   end
 
+  def show
+    @message = Message.find_by_id(params[:id])
+    unless @message.notification.read
+      @message.notification.read = true
+      @message.notification.save
+    end
+  end
+
   private
     def message_params
       params.require(:message).permit(:to_id, :content)
-    end
-
-    def has_read? message
-      message.notifications.collect(&:read).first
     end
 end
