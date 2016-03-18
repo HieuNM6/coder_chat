@@ -1,4 +1,6 @@
 class Message < ActiveRecord::Base
+  default_scope {order('created_at DESC')}
+
   belongs_to :user
   belongs_to :recipient, class_name: 'User', foreign_key: :to_id
   has_one :notification, as: :event

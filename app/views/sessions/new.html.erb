@@ -5,12 +5,12 @@
   </p>
 </div>
 <div class="row">
-  <div class="col-xs-8 col-xs-offset-2">
+  <div class="col-xs-6 col-xs-offset-3">
     <%= simple_form_for :user, {url:new_session_path} do |f| %>
       <%= f.input :email, label: "Email:" %>
       <%= f.input :password, label:"Password:" %>
       <div class="text-xs-center">
-        <%= f.button :submit, "Sign in", class:"btn btn-secondary btn-lg"  %>
+        <%= f.button :submit, "Sign in", class:"btn btn-secondary btn-block"  %>
       </div>
      <% end %>
   </div>

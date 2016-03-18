@@ -1,19 +1,18 @@
-<h1 class="text-xs-center"> Message box</h1>
+<h1 class="display-4 text-xs-center"> Inbox</h1>
 <% if !@messages.blank? %>
-  <ul>
+  <div class="list-group">
     <% @messages.each do |m| %>
       <% unless has_read? m %>
-      <strong>
-        <li> 
           <%= link_to "Messages has been receive at: 
-                              #{format_time(m.notification.created_at)}", message_path(m) %>
-        </li>
-      </strong>
+          #{format_time(m.notification.created_at)}", 
+          message_path(m), class: "list-group-item"%>
       <% else %>
-        <li> Messages has been read at: <%= format_time(m.notification.updated_at) %></li>
+          <%= link_to "Messages has been read at: 
+          #{format_time(m.notification.created_at)}", 
+          '#', class: "list-group-item disabled" %>
       <% end %>
     <% end %>
-  </ul>
+  </div>
 <% else %>
   <h2> Messages box empty</h2>
 <% end %>

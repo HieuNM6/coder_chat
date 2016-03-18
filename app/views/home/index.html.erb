@@ -1,14 +1,21 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
 <% if logged_in? %>
-  <h2>
-    wellcome <%= current_user.name  %>! | <%= link_to "Logout", logout_path, 
-      method: :delete %> <br>
-      You have <%= pluralize(@unread_messages_count, "unread message") %> <br>
-      <%= link_to "New Message", new_message_path %> |
-      <%= link_to "Inbox", messages_path %> | 
-      <%= link_to "Outbox", sent_messages_path %> 
-  </h2>
+  <div class="jumbotron jumbotron-fluid" style="background-color: #563d7c">
+    <h1 class="display-4 text-xs-center" style="color: #fff" >
+      Wellcome 
+    </h1>
+    <div class="lead text-xs-center" style="color:#cdbfe3">
+      <strong><%= current_user.name  %></strong>,
+      you have <%= pluralize(@unread_messages_count, "unread message") %> <br>
+      <br>
+    </div>
+        <div class="text-xs-center">
+          <div class="btn-group">
+            <%= link_to "New Message", new_message_path, class:"btn btn-secondary btn-lg" %> 
+            <%= link_to "Inbox", messages_path, class:"btn btn-secondary btn-lg"%> 
+            <%= link_to "Outbox", sent_messages_path, class:"btn btn-secondary btn-lg"%> 
+          </div>
+        </div>
+  </div>
 <% else %>
   <%= link_to "Register", new_user_path %> | <%= link_to "Login", login_path %>
 <% end %>
