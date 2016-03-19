@@ -5,7 +5,7 @@
   <% @users.each do |user| %>
     <div class="list-group-item">
     <div class="pull-xs-right">
-	    <%= link_to "Send Message", new_message_path(user_id: user.id), class:"btn btn-secondary-outline btn-sm" %>
+	    <%= link_to "Send Message", new_message_path(recipient_id: user.id), class:"btn btn-secondary-outline btn-sm" %>
       <%unless @friend_list.include? user.id.to_s  %>
         <%= link_to "Add friend", add_friend_path(add_friend: user.id), 
           class:"btn btn-secondary-outline btn-sm" %>

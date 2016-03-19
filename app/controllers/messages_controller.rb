@@ -2,6 +2,9 @@ class MessagesController < ApplicationController
   before_action :require_login 
   def new
     @message = current_user.messages.new
+    unless params[:recipient_id].blank?
+      @recipient = User.find_by_id(params[:recipient_id]) 
+    end
   end
 
   def create
