@@ -5,4 +5,8 @@ class User < ActiveRecord::Base
 
   has_secure_password
   validates :name, length: {minimum: 5}
+
+  def init
+    self.friend_list ||= ""
+  end
 end

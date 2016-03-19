@@ -1,4 +1,6 @@
-<h1 class="display-4 text-xs-center"> Outbox</h1>
+<div class="jumbotron jumbotron-fluid" style= "background-color: #563d7c; color: #fff">
+  <h1 class="display-3 text-xs-center">Outbox</h1>
+</div>
 <% if !@messages.blank? %>
   <ul class="list-group">
     <% @messages.each do |m| %>
@@ -16,5 +18,9 @@
     <% end %>
   </ul>
 <% else %>
-  <h2> Messages box empty</h2>
+  <h2 class="text-xs-center"> Your outbox is empty</h2>
 <% end %>
+<hr>
+<div class="text-xs-center">
+  <%= link_to "Send Message", new_message_path, class:"btn btn-secondary btn-lg" %>
+</div>

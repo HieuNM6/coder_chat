@@ -1,4 +1,6 @@
-<h1 class="display-4 text-xs-center"> Inbox</h1>
+<div class="jumbotron jumbotron-fluid" style= "background-color: #563d7c; color: #fff">
+  <h1 class="display-3 text-xs-center">Inbox</h1>
+</div>
 <% if !@messages.blank? %>
   <div class="list-group">
     <% @messages.each do |m| %>
@@ -14,5 +16,6 @@
     <% end %>
   </div>
 <% else %>
-  <h2> Messages box empty</h2>
+  <h2 class="text-xs-center"> Your inbox is empty</h2>
 <% end %>
+

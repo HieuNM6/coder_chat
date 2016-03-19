@@ -1,0 +1,26 @@
+<div class="jumbotron jumbotron-fluid" style= "background-color: #563d7c; color: #fff">
+  <h1 class="display-3 text-xs-center">Friend List</h1>
+</div>
+<% if @friend.blank? %>
+<div class="list-group clearfix" style="line-height:30px">
+  <% @friends.each do |f| %>
+    <div class="list-group-item">
+      <div class="pull-xs-right">
+        <%= link_to "Send Message", new_message_path, class:"btn btn-secondary-outline btn-sm" %>
+        <%= link_to "Remove", add_friend_path(remove_friend: f.id), class:"btn btn-secondary-outline btn-sm" %>
+      </div>
+     <%= f.name %>: <%= f.email %>
+    </div>
+  <% end %>
+</div>
+<% else %>
+  <h2>Your friend list is empty </h2>
+<% end %>
+  <hr>
+  <div class="col-xs-12">
+    <%= link_to "Add new friend", add_friend_path, class: "btn btn-secondary" %>
+    <%= link_to "Block User", '#', class: "btn btn-secondary pull-xs-right" %>
+  </div>
+
+
+

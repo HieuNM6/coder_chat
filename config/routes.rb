@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   post 'new_session' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
   get 'sent_messages' => 'home#sent_messages'
+  get 'friends' => 'home#friends'
+  get 'add_friend' => 'home#add_friend'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
