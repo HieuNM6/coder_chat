@@ -2,11 +2,11 @@
 <div class="row">
   <div class="col-xs-8 col-xs-offset-2">
     <%= simple_form_for @message do |f| %>
-      <% if params[:recipient_id].blank? %>
-        <%= f.input :to_id, label: "To id:" %>
+      <% if params[:recipient_email].blank? %>
+        <%= f.input :email, label: "To Email:" %>
       <% else %>
         <%= "To: #{@recipient.name} (#{@recipient.email})" %>
-        <%= f.hidden_field :to_id, value: params[:recipient_id] %>
+        <%= f.hidden_field :email, value: params[:recipient_email] %>
       <% end %>
         <%= f.input :content, label: "Body:" %>
         <div class="text-xs-center">

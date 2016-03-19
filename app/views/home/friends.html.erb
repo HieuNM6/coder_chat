@@ -6,8 +6,10 @@
   <% @friends.each do |f| %>
     <div class="list-group-item">
       <div class="pull-xs-right">
-        <%= link_to "Send Message", new_message_path(recipient_id: f.id), class:"btn btn-secondary-outline btn-sm" %>
-        <%= link_to "Remove", add_friend_path(remove_friend: f.id), class:"btn btn-secondary-outline btn-sm" %>
+        <%= link_to "Send Message", new_message_path(recipient_email: f.email),
+          class:"btn btn-secondary-outline btn-sm" %>
+        <%= link_to "Remove", add_friend_path(remove_friend: f.id), 
+          class:"btn btn-secondary-outline btn-sm" %>
       </div>
      <%= f.name %>: <%= f.email %>
     </div>

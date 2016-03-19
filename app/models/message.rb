@@ -1,5 +1,6 @@
 class Message < ActiveRecord::Base
   default_scope {order('created_at DESC')}
+  attr_accessor :email
 
   belongs_to :user
   belongs_to :recipient, class_name: 'User', foreign_key: :to_id
