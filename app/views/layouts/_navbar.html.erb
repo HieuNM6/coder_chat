@@ -20,6 +20,7 @@
            class: "nav-link dropdown-toggle", id: "Preview" %>
          <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
            <%= link_to "New Message", new_message_path, class: "dropdown-item" %>
+           <%= link_to "User list", user_list_path, class: "dropdown-item" %>
            <%= link_to "Friend list", friends_path, class: "dropdown-item" %>
            <%= link_to "Inbox", messages_path, class: "dropdown-item" %>
            <%= link_to "Outbox", sent_messages_path, class: "dropdown-item" %>

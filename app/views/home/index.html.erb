@@ -5,7 +5,7 @@
     </h1>
     <div class="lead text-xs-center" style="color:#cdbfe3">
       <strong><%= current_user.name  %></strong>,
-      you have <%= pluralize(@unread_messages_count, "unread message") %> <br>
+      you have <%= pluralize(unread_message(current_user.notifications),"unread message") %> <br>
       <br>
     </div>
         <div class="text-xs-center">

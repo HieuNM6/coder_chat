@@ -8,7 +8,7 @@
       <div class="pull-xs-right">
         <%= link_to "Send Message", new_message_path(recipient_email: f.email),
           class:"btn btn-secondary-outline btn-sm" %>
-        <%= link_to "Remove", add_friend_path(remove_friend: f.id), 
+        <%= link_to "Remove", user_list_path(remove_friend: f.id), 
           class:"btn btn-secondary-outline btn-sm" %>
       </div>
      <%= f.name %>: <%= f.email %>
@@ -20,7 +20,7 @@
 <% end %>
   <hr>
   <div class="col-xs-12">
-    <%= link_to "Add new friend", add_friend_path, class: "btn btn-secondary" %>
+    <%= link_to "Add new friend", user_list_path, class: "btn btn-secondary" %>
     <%= link_to "Block User", '#', class: "btn btn-secondary pull-xs-right" %>
   </div>
 

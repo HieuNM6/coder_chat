@@ -17,10 +17,29 @@ module ApplicationHelper
   def unread_message notifications
     counter = 0
     notifications.each do |n|
-      unless n.read
-       counter += 1  
-      end
+        if !n.read && !block_notification(n)
+         counter += 1  
+        end
     end
     counter
   end
+  private
+    def block_notification notification_id
+      notification = Notification.find_by_id(notification_id)
+      m = Message.find_by_id(notification.event_id)
+      if block_list.include? m.user_id.to_s
+         return true
+      else
+         return false
+      end
+    end
+
+    def block_list
+      block_list = []
+      list ||= current_user.block_list.split(" ")
+      list.each do |l|
+        block_list << l
+      end
+      block_list
+    end
 end

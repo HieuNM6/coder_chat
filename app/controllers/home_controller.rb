@@ -3,8 +3,6 @@ class HomeController < ApplicationController
   def index
     if logged_in?
       @messages = current_user.messages_received
-      @notifications = current_user.notifications
-      @unread_messages_count ||= unread_message @notifications
     end
   end
 
@@ -21,9 +19,10 @@ class HomeController < ApplicationController
     end 
   end
 
-  def add_friend
+  def user_list
     @users = User.all
     @friend_list = friend_list
+    @block_list = block_list
     unless params[:add_friend].blank?
       @friend_list << params[:add_friend]
       current_user.update(friend_list: @friend_list.join(" "))
@@ -36,17 +35,21 @@ class HomeController < ApplicationController
       flash[:success] = "Remove friend successful"
       redirect_to friends_path
     end
-  end
-  private
-    def unread_message notifications
-      counter = 0
-      notifications.each do |n|
-        unless n.read
-         counter += 1  
-        end
-      end
-      counter
+    unless params[:block].blank?
+      @block_list << params[:block]
+      current_user.update(block_list: @block_list.join(" "))
+      flash[:success] = "Block successful"
+      redirect_to user_list_path
     end
+    unless params[:unblock].blank?
+      @block_list.delete(params[:unblock])
+      current_user.update(block_list: @block_list.join(" "))
+      flash[:success] = "Unblock successful"
+      redirect_to user_list_path
+    end
+  end
+
+  private
 
     def recipient_of_message message
       User.find_by_id(message.to_id)
@@ -60,4 +63,14 @@ class HomeController < ApplicationController
       end
       friend_list
     end
+
+    def block_list
+      block_list = []
+      list ||= current_user.block_list.split(" ")
+      list.each do |l|
+        block_list << l
+      end
+      block_list
+    end
+
 end

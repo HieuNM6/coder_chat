@@ -45,6 +45,7 @@ class MessagesController < ApplicationController
 
   def index
     @messages = current_user.messages_received
+    @block_list = current_user.block_list.split("")
   end
 
   def show
