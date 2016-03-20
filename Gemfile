@@ -32,6 +32,10 @@ gem 'simple_form'
 
 gem 'rails-assets-tether'
 
+gem 'omniauth'
+
+gem 'omniauth-facebook', '~> 3.0.0'
+
 
 gem 'rails_12factor', group: :production
 # Use Unicorn as the app server
