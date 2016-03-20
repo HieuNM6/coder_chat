@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   root 'home#index'
   get 'login' => 'sessions#new'
   post 'new_session' => 'sessions#create'
-  get 'logout' => 'sessions#destroy'
+  delete '/' => 'sessions#destroy'
   get 'sent_messages' => 'home#sent_messages'
   get 'friends' => 'home#friends'
   get 'user_list' => 'home#user_list'
