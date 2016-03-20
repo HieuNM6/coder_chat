@@ -1,5 +1,4 @@
 class HomeController < ApplicationController
-  helper_method :recipient_of_message
   def index
     if logged_in?
       @messages = current_user.messages_received
@@ -50,11 +49,6 @@ class HomeController < ApplicationController
   end
 
   private
-
-    def recipient_of_message message
-      User.find_by_id(message.to_id)
-    end
-
     def friend_list
       friend_list = []
       list ||= current_user.friend_list.split(" ")

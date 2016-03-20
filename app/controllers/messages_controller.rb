@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
   before_action :require_login 
+  helper_method :set_read?
   def new
     @message = current_user.messages.new
     unless params[:recipient_email].blank?
@@ -50,10 +51,7 @@ class MessagesController < ApplicationController
 
   def show
     @message = Message.find_by_id(params[:id])
-    unless @message.notification.read
-      @message.notification.read = true
-      @message.notification.save
-    end
+    @user = User.find_by_id(@message.user_id)
   end
 
   private
@@ -73,6 +71,13 @@ class MessagesController < ApplicationController
       else
         flash[:alert] = "Emails addess: '#{fails.join(";")}' does not exist,
         messages to address: '#{success.join(";")}' has been sent."
+      end
+    end
+
+    def set_read? message
+      unless message.notification.read
+        message.notification.read = true
+        message.notification.save!
       end
     end
 end

@@ -9,11 +9,18 @@
           <strong>
             Message has been sent to <%= recipient_of_message(m).email %> at: 
             <%= format_time(m.created_at) %>
+            <div class="pull-xs-right">
+              Unread
+            </div>
           </strong>
-      </strong>
+      </li>
       <% else %>
         <li class="list-group-item disabled"> Message to <%= recipient_of_message(m).email %> has been read at: 
-                            <%= format_time(m.notification.updated_at) %></li>
+                            <%= format_time(m.notification.updated_at) %>
+        <div class="pull-xs-right">
+          Has read
+        </div>
+        </li>
       <% end %>
     <% end %>
   </ul>

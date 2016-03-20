@@ -1,9 +1,11 @@
-<h1 class="display-4 text-xs-center">New Message</h1>
+<div class="jumbotron">
+  <h1 class="display-4 text-xs-center">New Message</h1>
+</div>
 <div class="row">
   <div class="col-xs-8 col-xs-offset-2">
     <%= simple_form_for @message do |f| %>
       <% if params[:recipient_email].blank? %>
-        <%= f.input :email, label: "To Email:" %>
+        <%= f.input :email, label: "To Email (use ';' to send multi email):" %>
       <% else %>
         <%= "To: #{@recipient.name} (#{@recipient.email})" %>
         <%= f.hidden_field :email, value: params[:recipient_email] %>

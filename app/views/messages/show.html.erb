@@ -1,3 +1,20 @@
-<h2>
-  <%= @message.content %>
-</h2>
+<% if @message.to_id == current_user.id %>
+  <% unless @message.notification.read %>
+    <h1 class="text-xs-center"><%= @user.name.capitalize %></h1>
+    <hr>
+    <h2>
+      <%= @message.content %>
+    </h2>
+    <% set_read? @message %>
+  <% else %>
+    <h2 class="text-xs-center">Your message has been read</h2>
+  <% end %>
+    <hr>
+  <div class="text-xs-center">
+    <%= link_to "Reply", new_message_path(recipient_email: @user.email),
+    class:"btn btn-secondary btn-lg"%>
+  </div>
+<% else %>
+  <h2 class="text-xs-center">This message not send to you</h2>
+<% end %>
+

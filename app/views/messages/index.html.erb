@@ -6,13 +6,25 @@
     <% @messages.each do |m| %>
       <% unless @block_list.include?(m.user_id.to_s) %>
         <% unless has_read? m %>
-            <%= link_to "Messages has been receive at: 
-            #{format_time(m.notification.created_at)}", 
-            message_path(m), class: "list-group-item"%>
+            <div class="list-group-item">
+              <strong>
+                <%= link_to "Messages has been receive at: 
+                #{format_time(m.notification.created_at)}", 
+                message_path(m) %>
+                  <div class="pull-xs-right">
+                    Unread(form: <%= (recipient_of_message m).email %>)
+                  </div>
+              </strong>
+            </div>
         <% else %>
-            <%= link_to "Messages has been read at: 
-            #{format_time(m.notification.created_at)}", 
-            '#', class: "list-group-item disabled" %>
+            <div class="list-group-item disabled">
+              <%= link_to "Messages has been read at: 
+              #{format_time(m.notification.created_at)}", 
+              '#'%>
+                <div class="pull-xs-right">
+                  Has read(form: <%= (recipient_of_message m).email %>)
+                </div>
+            </div>
         <% end %>
       <% end %>
     <% end %>

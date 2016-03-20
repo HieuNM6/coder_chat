@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  helper_method :current_user,:logged_in?, :format_time,:has_read?
+  helper_method :current_user,:logged_in?, :format_time,:has_read?,:recipient_of_message
 
 
   def current_user
@@ -26,5 +26,9 @@ class ApplicationController < ActionController::Base
 
   def has_read? message
     message.notification.read
+  end
+
+  def recipient_of_message message
+    User.find_by_id(message.to_id)
   end
 end

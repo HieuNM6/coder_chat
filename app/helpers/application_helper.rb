@@ -23,6 +23,7 @@ module ApplicationHelper
     end
     counter
   end
+
   private
     def block_notification notification_id
       notification = Notification.find_by_id(notification_id)
