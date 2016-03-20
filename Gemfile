@@ -30,6 +30,8 @@ gem 'bootstrap', '~> 4.0.0.alpha3'
 
 gem 'simple_form'
 
+gem 'rails-assets-tether'
+
 
 gem 'rails_12factor', group: :production
 # Use Unicorn as the app server
